@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Quh-yU-KiD">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Text View Controller-->
+        <scene sceneID="lML-h9-mZV">
+            <objects>
+                <viewController storyboardIdentifier="TextViewController" id="Quh-yU-KiD" customClass="TextViewController" customModule="AllDirectTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Uqj-KA-yI3"/>
+                        <viewControllerLayoutGuide type="bottom" id="CAV-1a-n2n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fkb-ZW-Ceq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yL1-ZM-eGg">
+                                <rect key="frame" x="0.0" y="433" width="414" height="30"/>
+                                <state key="normal">
+                                    <mutableString key="title">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                </state>
+                                <connections>
+                                    <action selector="textTap:" destination="Quh-yU-KiD" eventType="touchUpInside" id="UYg-2S-TY8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yL1-ZM-eGg" firstAttribute="leading" secondItem="Fkb-ZW-Ceq" secondAttribute="leading" id="Nrf-iO-xrM"/>
+                            <constraint firstAttribute="trailing" secondItem="yL1-ZM-eGg" secondAttribute="trailing" id="OPJ-Be-svX"/>
+                            <constraint firstItem="yL1-ZM-eGg" firstAttribute="centerY" secondItem="Fkb-ZW-Ceq" secondAttribute="centerY" id="rX2-g1-w6X"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textButton" destination="yL1-ZM-eGg" id="CzZ-UN-sTg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5pp-Wa-l30" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="95.652173913043484" y="-183.48214285714286"/>
+        </scene>
+        <!--Text Detail View Controller-->
+        <scene sceneID="eSx-QU-LaR">
+            <objects>
+                <viewController storyboardIdentifier="TextDetailViewController" id="qAG-AM-3Gc" customClass="TextDetailViewController" customModule="AllDirectTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RDb-8t-oJe"/>
+                        <viewControllerLayoutGuide type="bottom" id="qfu-bi-xAa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XaN-MH-JDc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YOA-ss-DRe">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YOA-ss-DRe" firstAttribute="leading" secondItem="XaN-MH-JDc" secondAttribute="leading" id="RgG-Lu-L80"/>
+                            <constraint firstAttribute="bottom" secondItem="YOA-ss-DRe" secondAttribute="bottom" id="b0w-IK-wOc"/>
+                            <constraint firstAttribute="trailing" secondItem="YOA-ss-DRe" secondAttribute="trailing" id="dfx-BT-pD4"/>
+                            <constraint firstItem="YOA-ss-DRe" firstAttribute="top" secondItem="RDb-8t-oJe" secondAttribute="bottom" id="fSg-Sx-6fj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="YOA-ss-DRe" id="gkT-O8-iYL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6mc-gu-LQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="850.72463768115949" y="-183.48214285714286"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,16 @@
+PODS:
+  - TransitionController (0.1.0)
+
+DEPENDENCIES:
+  - TransitionController (from `../`)
+
+EXTERNAL SOURCES:
+  TransitionController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  TransitionController: f0dade7a898fb71bc539c9c9da4612cc3ad6264a
+
+PODFILE CHECKSUM: b9c1a70a50c238bfa7554e601d742db820bc75ed
+
+COCOAPODS: 1.5.3

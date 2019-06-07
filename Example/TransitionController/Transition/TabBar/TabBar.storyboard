@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wkm-QK-65G">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Controller-->
+        <scene sceneID="bxt-vr-xu5">
+            <objects>
+                <viewController storyboardIdentifier="TabController" id="wkm-QK-65G" customClass="TabController" customModule="AllDirectTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iN6-gj-Pgq"/>
+                        <viewControllerLayoutGuide type="bottom" id="JTw-cU-hvm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yd6-qE-gmM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwG-xg-8fw">
+                                <rect key="frame" x="179" y="706" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="rZL-x2-d4P"/>
+                                    <constraint firstAttribute="width" constant="56" id="xCj-ou-5N0"/>
+                                </constraints>
+                                <state key="normal" title="Tap Me"/>
+                                <connections>
+                                    <action selector="tab:" destination="wkm-QK-65G" eventType="touchUpInside" id="1aN-76-1Qw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JTw-cU-hvm" firstAttribute="top" secondItem="cwG-xg-8fw" secondAttribute="bottom" constant="100" id="5Xl-MV-w3z"/>
+                            <constraint firstItem="cwG-xg-8fw" firstAttribute="centerX" secondItem="yd6-qE-gmM" secondAttribute="centerX" id="ZaT-Kr-haP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tabButton" destination="cwG-xg-8fw" id="nYL-EA-XMV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ko5-Yx-2Sk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="236" y="-176"/>
+        </scene>
+    </scenes>
+</document>
