@@ -90,7 +90,7 @@ class ImageTransitionController: TransitionViewController {
     }
 
     override var dismissFromImage: UIImage? {
-        return self.image.image
+        return self.imageView.image
     }
 }
 ```
