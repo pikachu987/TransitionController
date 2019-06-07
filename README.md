@@ -7,17 +7,12 @@
 
 ## Introduce
 
-You can dismiss transition and present transition between UIViewController, UINavigationController, UITabBarController, UICollectionViewController, and UITableViewController.
+You can dismiss transition and present transition between UIViewController, UINavigationController, UITabBarController, UICollectionViewController, and UITableViewController.<br>
 Receives a delegate for the willPresent, didPresent, willDismiss and didDismiss of the ViewController.
 
-
-<img width="200px" src="./img/single.gif">
-&emsp;&emsp;
-<img width="200px" src="./img/slide.gif">
-
-<img width="200px" src="./img/single.png">
-&emsp;&emsp;
-<img width="200px" src="./img/slide.png">
+|<img width="200px" src="./img/single.gif">|<img width="200px" src="./img/slide.gif">|
+|---|---|
+|<img width="200px" src="./img/single.png">|<img width="200px" src="./img/slide.png">|
 
 
 ## Requirements
