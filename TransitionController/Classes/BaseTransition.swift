@@ -20,7 +20,7 @@
 
 import UIKit
 
-public protocol BaseTransition {
+public protocol BaseTransition: class {
     var key: Any? { set get }
     
     var containerView: UIView? { get }

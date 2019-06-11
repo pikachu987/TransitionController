@@ -21,7 +21,7 @@
 import UIKit
 
 protocol AnimatedTransitionDelegate: class {
-    var baseTransition: BaseTransition { get set }
+    var baseTransition: BaseTransition? { get }
 }
 
 class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
@@ -34,14 +34,14 @@ class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         if self.mode == .present {
-            return self.delegate?.baseTransition.presentDuration ?? 0.35
+            return self.delegate?.baseTransition?.presentDuration ?? 0.35
         } else {
-            return self.delegate?.baseTransition.dismissDuration ?? 0.35
+            return self.delegate?.baseTransition?.dismissDuration ?? 0.35
         }
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let superview = self.delegate?.baseTransition.superview else { return }
+        guard let superview = self.delegate?.baseTransition?.superview else { return }
         guard let viewController = transitionContext.viewController(forKey: self.mode == .present ? .to : .from) else { return }
         
         viewController.view.layoutIfNeeded()
@@ -52,7 +52,7 @@ class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
             let conextView = UIView()
             conextView.translatesAutoresizingMaskIntoConstraints = false
             conextView.alpha = 0
-            conextView.backgroundColor = self.delegate?.baseTransition.transitionView.backgroundColor
+            conextView.backgroundColor = self.delegate?.baseTransition?.transitionView.backgroundColor
             containerView.addSubview(conextView)
             containerView.addConstraints(
                 NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: [], metrics: nil, views: ["view": conextView])
@@ -69,18 +69,18 @@ class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
         }
         
         if self.mode == .present {
-            let presentDuration = self.delegate?.baseTransition.presentDuration ?? 0.35
-            self.delegate?.baseTransition.transitionWillPresent()
+            let presentDuration = self.delegate?.baseTransition?.presentDuration ?? 0.35
+            self.delegate?.baseTransition?.transitionWillPresent()
             
-            self.imageView?.image = (self.delegate?.baseTransition.presentFromImage ?? self.delegate?.baseTransition.presentToView?.imageWithView)
-            if let fromView = self.delegate?.baseTransition.presentFromView {
+            self.imageView?.image = (self.delegate?.baseTransition?.presentFromImage ?? self.delegate?.baseTransition?.presentToView?.imageWithView)
+            if let fromView = self.delegate?.baseTransition?.presentFromView {
                 self.imageView?.layer.cornerRadius = fromView.layer.cornerRadius
                 self.imageView?.frame = fromView.convert(fromView.bounds, to: superview)
                 self.imageView?.contentMode = fromView.contentMode
             }
             UIView.animate(withDuration: presentDuration, animations: {
                 self.conextView?.alpha = 1
-                if let toView = self.delegate?.baseTransition.presentToView {
+                if let toView = self.delegate?.baseTransition?.presentToView {
                     self.imageView?.frame = toView.frame
                     self.imageView?.layer.cornerRadius = toView.layer.cornerRadius
                 }
@@ -89,23 +89,23 @@ class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 self.imageView?.image = nil
                 containerView.addSubview(viewController.view)
                 transitionContext.completeTransition(true)
-                self.delegate?.baseTransition.transitionDidPresent()
+                self.delegate?.baseTransition?.transitionDidPresent()
             })
             
         } else if self.mode == .dismiss {
-            let dismissDuration = self.delegate?.baseTransition.dismissDuration ?? 0.35
+            let dismissDuration = self.delegate?.baseTransition?.dismissDuration ?? 0.35
             viewController.view.removeFromSuperview()
-            self.delegate?.baseTransition.transitionWillDismiss()
+            self.delegate?.baseTransition?.transitionWillDismiss()
             
-            self.imageView?.image = self.delegate?.baseTransition.dismissFromImage
-            if let fromView = self.delegate?.baseTransition.dismissFromView {
+            self.imageView?.image = self.delegate?.baseTransition?.dismissFromImage
+            if let fromView = self.delegate?.baseTransition?.dismissFromView {
                 self.imageView?.frame = fromView.convert(fromView.bounds, to: containerView)
                 self.imageView?.layer.cornerRadius = fromView.layer.cornerRadius
             }
             
             UIView.animate(withDuration: dismissDuration, animations: {
                 self.conextView?.alpha = 0
-                if let toView = self.delegate?.baseTransition.dismissToView {
+                if let toView = self.delegate?.baseTransition?.dismissToView {
                     self.imageView?.frame = toView.convert(toView.bounds, to: superview)
                     self.imageView?.layer.cornerRadius = toView.layer.cornerRadius
                     self.imageView?.contentMode = toView.contentMode
@@ -113,7 +113,7 @@ class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
             }, completion: { _ in
                 self.imageView?.image = nil
                 transitionContext.completeTransition(true)
-                self.delegate?.baseTransition.transitionDidDismiss()
+                self.delegate?.baseTransition?.transitionDidDismiss()
             })
         }
     }

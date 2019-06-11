@@ -10,16 +10,7 @@ import UIKit
 import TransitionController
 
 class SlideImagesViewController: UIViewController {
-    private lazy var array: [UIImage?] = {
-        var array = [UIImage?]()
-        for index in 1...9 {
-            array.append(UIImage(named: "image\(index).jpg"))
-        }
-        array.append(contentsOf: array)
-        array.append(contentsOf: array)
-        array.append(contentsOf: array)
-        return array
-    }()
+    private var array = [UIImage?]()
     
     private let collectonView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -36,7 +27,6 @@ class SlideImagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .black
         self.view.addSubview(self.collectonView)
         self.collectonView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addConstraints(
@@ -45,9 +35,27 @@ class SlideImagesViewController: UIViewController {
         self.view.addConstraints(
             NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view": self.collectonView])
         )
-        DispatchQueue.main.async {
-            self.collectonView.delegate = self
-            self.collectonView.dataSource = self
+        self.collectonView.delegate = self
+        self.collectonView.dataSource = self
+        
+        let indicator = UIActivityIndicatorView(style: .white)
+        indicator.startAnimating()
+        indicator.frame.origin = self.view.center
+        self.view.addSubview(indicator)
+        DispatchQueue.global().async {
+            var array = [UIImage?]()
+            for index in 1...9 {
+                array.append(UIImage(named: "image\(index).jpg"))
+            }
+            array.append(contentsOf: array)
+            array.append(contentsOf: array)
+            array.append(contentsOf: array)
+            self.array = array
+            DispatchQueue.main.async {
+                indicator.stopAnimating()
+                indicator.removeFromSuperview()
+                self.collectonView.reloadData()
+            }
         }
     }
 }
