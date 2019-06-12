@@ -19,7 +19,12 @@ class TextNavigationController: TransitionNavigationController {
         return view
     }
     
-    override var isGesture: Bool {
-        return (self.visibleViewController as? TextDetailViewController) != nil
+    override func transitionRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if let _  = gestureRecognizer as? UIScreenEdgePanGestureRecognizer {
+            return true
+        } else if let _  = gestureRecognizer as? UIPanGestureRecognizer {
+            return (self.visibleViewController as? HorizontalSlideViewController) != nil
+        }
+        return false
     }
 }

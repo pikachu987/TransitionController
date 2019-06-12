@@ -39,8 +39,6 @@ public protocol BaseTransition: class {
     
     var transitionView: UIView { get }
     
-    var isGesture: Bool { get }
-    
     func dismiss()
     
     func transitionGesture(_ gesture: UIPanGestureRecognizer, progress: CGFloat)
@@ -49,4 +47,6 @@ public protocol BaseTransition: class {
     func transitionDidPresent()
     func transitionWillDismiss()
     func transitionDidDismiss()
+    
+    func transitionRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool
 }

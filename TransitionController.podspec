@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TransitionController'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'Present transition and dismiss transition of UIViewController with simple code'
 
 # This description is used to generate tags and improve search results.

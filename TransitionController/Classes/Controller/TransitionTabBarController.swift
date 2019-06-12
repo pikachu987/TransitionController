@@ -97,10 +97,6 @@ open class TransitionTabBarController: UITabBarController, BaseTransition {
         return self.view
     }
     
-    open var isGesture: Bool {
-        return true
-    }
-    
     private lazy var commonTransition: CommonTransition = {
         let commonTransition = CommonTransition(baseTransition: self)
         return commonTransition
@@ -118,24 +114,28 @@ open class TransitionTabBarController: UITabBarController, BaseTransition {
         self.dismiss(animated: true, completion: nil)
     }
     
-    public func transitionGesture(_ gesture: UIPanGestureRecognizer, progress: CGFloat) {
+    open func transitionGesture(_ gesture: UIPanGestureRecognizer, progress: CGFloat) {
         self.transitionDelegate?.transitionGesture(self, viewController: self, gesture: gesture, progress: progress)
     }
     
-    public func transitionWillPresent() {
+    open func transitionWillPresent() {
         self.transitionDelegate?.transitionWillPresent(self, viewController: self)
     }
     
-    public func transitionDidPresent() {
+    open func transitionDidPresent() {
         self.transitionDelegate?.transitionDidPresent(self, viewController: self)
     }
     
-    public func transitionWillDismiss() {
+    open func transitionWillDismiss() {
         self.transitionDelegate?.transitionWillDismiss(self, viewController: self)
     }
     
-    public func transitionDidDismiss() {
+    open func transitionDidDismiss() {
         self.transitionDelegate?.transitionDidDismiss(self, viewController: self)
+    }
+    
+    open func transitionRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     @objc private func panGesture(_ gesture: UIPanGestureRecognizer) {
@@ -146,7 +146,7 @@ open class TransitionTabBarController: UITabBarController, BaseTransition {
 // MARK: UIGestureRecognizerDelegate
 extension TransitionTabBarController: UIGestureRecognizerDelegate {
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return self.isGesture
+        return self.transitionRecognizerShouldBegin(gestureRecognizer)
     }
 }
 
