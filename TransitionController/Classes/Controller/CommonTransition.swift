@@ -20,14 +20,14 @@
 
 import UIKit
 
-class CommonTransition: NSObject, AnimatedTransitionDelegate {
+public class CommonTransition: NSObject, AnimatedTransitionDelegate {
     weak var _baseTransition: BaseTransition?
     
     var baseTransition: BaseTransition? {
         return self._baseTransition
     }
     
-    private let animatedTransition = AnimatedTransition()
+    public let animatedTransition = AnimatedTransition()
     private var centerPoint = CGPoint.zero
     
     var containerView: UIView? {
@@ -72,7 +72,7 @@ class CommonTransition: NSObject, AnimatedTransitionDelegate {
             let change = gesture.translation(in: view)
             self.baseTransition?.transitionView.center = CGPoint(x: origin.x + change.x, y: origin.y + change.y)
             let alpha = 1 - gestureProgress
-            self.animatedTransition.conextView?.alpha = alpha
+            self.animatedTransition.contextView?.alpha = alpha
             gesture.setTranslation(CGPoint.zero, in: nil)
         case .ended:
             let velocity = gesture.velocity(in: view)
@@ -86,7 +86,7 @@ class CommonTransition: NSObject, AnimatedTransitionDelegate {
                 self.baseTransition?.transitionView.center = self.centerPoint
             }, completion: { _ in
                 self.centerPoint = .zero
-                self.animatedTransition.conextView?.alpha = 1
+                self.animatedTransition.contextView?.alpha = 1
             })
         }
     }

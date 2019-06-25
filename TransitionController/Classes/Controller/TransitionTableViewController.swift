@@ -86,10 +86,14 @@ open class TransitionTableViewController: UIViewController, BaseTransition {
         return self.view
     }
     
-    private lazy var commonTransition: CommonTransition = {
+    public lazy var commonTransition: CommonTransition = {
         let commonTransition = CommonTransition(baseTransition: self)
         return commonTransition
     }()
+    
+    public var animatedTransition: AnimatedTransition {
+        return self.commonTransition.animatedTransition
+    }
     
     override open func viewDidLoad() {
         super.viewDidLoad()

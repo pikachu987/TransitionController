@@ -24,15 +24,15 @@ protocol AnimatedTransitionDelegate: class {
     var baseTransition: BaseTransition? { get }
 }
 
-class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
+public class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
     weak var delegate: AnimatedTransitionDelegate?
     
     var mode: Mode = .present
-    weak var containerView: UIView?
-    var conextView: UIView?
-    var imageView: UIImageView?
+    public weak var containerView: UIView?
+    public var contextView: UIView?
+    public var imageView: UIImageView?
     
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         if self.mode == .present {
             return self.delegate?.baseTransition?.presentDuration ?? 0.35
         } else {
@@ -40,7 +40,7 @@ class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
         }
     }
     
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let superview = self.delegate?.baseTransition?.superview else { return }
         guard let viewController = transitionContext.viewController(forKey: self.mode == .present ? .to : .from) else { return }
         
@@ -48,19 +48,19 @@ class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
         let containerView = transitionContext.containerView
         self.containerView = containerView
         
-        if self.conextView == nil {
-            let conextView = UIView()
-            conextView.translatesAutoresizingMaskIntoConstraints = false
-            conextView.alpha = 0
-            conextView.backgroundColor = self.delegate?.baseTransition?.transitionView.backgroundColor
-            containerView.addSubview(conextView)
+        if self.contextView == nil {
+            let contextView = UIView()
+            contextView.translatesAutoresizingMaskIntoConstraints = false
+            contextView.alpha = 0
+            contextView.backgroundColor = self.delegate?.baseTransition?.transitionView.backgroundColor
+            containerView.addSubview(contextView)
             containerView.addConstraints(
-                NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: [], metrics: nil, views: ["view": conextView])
+                NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: [], metrics: nil, views: ["view": contextView])
             )
             containerView.addConstraints(
-                NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view": conextView])
+                NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: ["view": contextView])
             )
-            self.conextView = conextView
+            self.contextView = contextView
             
             let imageView = UIImageView()
             imageView.clipsToBounds = true
@@ -79,7 +79,7 @@ class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 self.imageView?.contentMode = fromView.contentMode
             }
             UIView.animate(withDuration: presentDuration, animations: {
-                self.conextView?.alpha = 1
+                self.contextView?.alpha = 1
                 if let toView = self.delegate?.baseTransition?.presentToView {
                     self.imageView?.frame = toView.frame
                     self.imageView?.layer.cornerRadius = toView.layer.cornerRadius
@@ -104,7 +104,7 @@ class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
             }
             
             UIView.animate(withDuration: dismissDuration, animations: {
-                self.conextView?.alpha = 0
+                self.contextView?.alpha = 0
                 if let toView = self.delegate?.baseTransition?.dismissToView {
                     self.imageView?.frame = toView.convert(toView.bounds, to: superview)
                     self.imageView?.layer.cornerRadius = toView.layer.cornerRadius
